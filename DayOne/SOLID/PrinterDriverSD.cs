@@ -15,7 +15,7 @@ public class PrinterDriver {
 }
 
 public interface IInputDevice {
-    public buffer GetData();
+    public buffer ReadPage();
     public bool IsEndOfData();
 }
 
@@ -28,43 +28,43 @@ public class File : IInputDevice {
         reader = new StreamReader(path);
     }
 
-    public buffer GetData() {
+    public override buffer ReadPage() {
         return reader.ReadLine();
     }
 
-    public bool IsEndOfData() {
+    public override bool IsEndOfData() {
         return reader.EndOfStream;
     }
 }
 
-public class ScannerDevice : IInputDevice {
+public class ScannerService : IInputDevice {
     private Scanner scanner;
 
-    public ScannerDevice() {
+    public ScannerService() {
         scanner = new Scanner();
     }
 
-    public buffer GetData() {
+    public override buffer ReadPage() {
         return scanner.Scan();
     }
 
-    public bool IsEndOfData() {
+    public override bool IsEndOfData() {
         return scanner.IsEndOfData();
     }
 }
 
-public class FaxDevice : IInputDevice {
+public class FaxService : IInputDevice {
     private Fax fax;
 
-    public Fax() {
+    public FaxService() {
         fax = new Fax();
     }
 
-    public buffer GetData() {
+    public override buffer ReadPage() {
         return fax.Receive();
     }
 
-    public bool IsEndOfData() {
+    public override bool IsEndOfData() {
         return fax.IsEndOfData();
     }
 }
