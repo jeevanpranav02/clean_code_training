@@ -25,3 +25,18 @@
     - Use Decorator Pattern
     - Use Template Pattern
 - TDD -> Test Driven Development
+
+## Day Three
+- Refactoring 
+    - Steps to Refactor
+        - Start some tests                   ---------
+        - Build ACL (Anti Corruption Layer)  ---------|---> Production Code should not be touched
+        - Build all the tests                ---------|
+        - Existing system might have defects ---------
+- Mutation Testing
+    - Mutation Testing is a type of software testing where we mutate (change) certain statements in the source code and check if the test cases are able to find the errors. 
+    - If the test cases fail to find the errors, it indicates a gap in the test cases.
+    - Java -> PIT Mutation testing
+    - Python -> MutPy
+    - C# -> Stryker.NET
+    - Rust -> Mutagen
